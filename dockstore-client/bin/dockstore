@@ -111,7 +111,7 @@ if [ "$HTTP_CLIENT" = "" ]; then
         if [ "$https_proxy" != "" ]; then
             CURL_PROXY="-x $https_proxy"
         fi
-        HTTP_CLIENT="curl $CURL_PROXY -f -L -o"
+        HTTP_CLIENT="curl --retry 3 $CURL_PROXY -f -L -o"
     else
         HTTP_CLIENT="wget -O"
     fi
